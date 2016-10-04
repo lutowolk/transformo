@@ -1,3 +1,4 @@
+var expect = require('chai').expect;
 var _ = require('lodash');
 
 var getErrors = require('./model.helpers').getErrors;
@@ -23,7 +24,7 @@ describe('Method getErrors', function () {
             }
         };
 
-        expect(getErrors(fields, data).length).toBe(1);
+        expect(getErrors(fields, data).length).to.eql(1);
     });
 
     it('should be return 0 error for not required number', function () {
@@ -38,7 +39,7 @@ describe('Method getErrors', function () {
             foo: {}
         };
 
-        expect(getErrors(fields, data).length).toBe(0);
+        expect(getErrors(fields, data).length).to.eql(0);
     });
 
     it('should be return 0 error valid integer id', function () {
@@ -55,7 +56,7 @@ describe('Method getErrors', function () {
             }
         };
 
-        expect(getErrors(fields, data).length).toBe(0);
+        expect(getErrors(fields, data).length).to.eql(0);
     });
 
     it('should be return 1 error for 3 fields', function () {
@@ -80,7 +81,7 @@ describe('Method getErrors', function () {
             }
         };
 
-        expect(getErrors(fields, data).length).toBe(1);
+        expect(getErrors(fields, data).length).to.eql(1);
     })
 });
 
@@ -107,7 +108,7 @@ describe('Method getFields', function () {
 
         var expectedFields = getFields(dataScheme);
 
-        expect(expectedFields.length).toEqual(3);
+        expect(expectedFields.length).to.eql(3);
     });
 });
 
@@ -123,7 +124,7 @@ describe('Method handleField', function () {
             foo: {}
         };
 
-        expect(handleField(field, data)).toBe('You');
+        expect(handleField(field, data)).to.eql('You');
     });
 
     it('should be return transform value', function () {
@@ -141,7 +142,7 @@ describe('Method handleField', function () {
             }
         };
 
-        expect(handleField(field, data)).toBe('My name is Monti');
+        expect(handleField(field, data)).to.eql('My name is Monti');
     });
 
     it('should be return value from custom get function', function () {
@@ -156,6 +157,6 @@ describe('Method handleField', function () {
             foo: {}
         };
 
-        expect(handleField(field, data)).toBe('source');
+        expect(handleField(field, data)).to.eql('source');
     });
 });

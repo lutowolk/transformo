@@ -1,6 +1,10 @@
 // Karma configuration
 // Generated on Mon Oct 03 2016 15:42:35 GMT+0700 (KRAT)
 
+// var jasmine = require('./node_modules/jasmine-core/lib/jasmine-core/jasmine');
+
+// console.log(jasmine);
+
 module.exports = function (config) {
     config.set({
 
@@ -10,7 +14,7 @@ module.exports = function (config) {
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['jasmine'],
+        frameworks: ['mocha'],
 
 
         // list of files / patterns to load in the browser
@@ -21,16 +25,15 @@ module.exports = function (config) {
 
 
         // list of files to exclude
-        exclude: [
-        ],
+        exclude: [],
 
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             // add webpack as preprocessor
-            '*.js': ['webpack'],
-            '**/*.js': ['webpack']
+            '*.js': ['webpack', 'sourcemap'],
+            '**/*.js': ['webpack', 'sourcemap']
         },
 
 

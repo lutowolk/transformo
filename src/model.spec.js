@@ -1,3 +1,4 @@
+var expect = require('chai').expect;
 var _ = require('lodash');
 var model = require('./model').model;
 
@@ -46,19 +47,19 @@ describe('model', function () {
     it('isValid should return true', function () {
         var valid = model(shape, source).isValid();
 
-        expect(valid).toBe(true);
+        expect(valid).to.eql(true);
     });
 
     it('isInvalid should return false', function () {
         var invalid = model(shape, source).isInvalid();
 
-        expect(invalid).toBe(false);
+        expect(invalid).to.eql(false);
     });
 
     it('data should be return data', function () {
         var data = model(shape, source).data();
 
-        expect(data).toEqual({
+        expect(data).to.eql({
             newFoo: {
                 id: 0,
                 name: 'Test'
@@ -73,7 +74,7 @@ describe('model', function () {
 
         model(shape, source)
             .invalid(function(errors) {
-                expect(errors.length).toBe(1)
+                expect(errors.length).to.eql(1)
             });
     })
 });

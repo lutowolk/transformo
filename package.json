@@ -1,5 +1,5 @@
 {
-  "name": "data-schema",
+  "name": "transformo",
   "version": "0.0.1",
   "scripts": {
     "test": "karma start karma.config.js"

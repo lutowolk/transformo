@@ -1,4 +1,4 @@
-# Transform JS
+# Transformo JS
 
 Transform one plain object to another with detail scheme. Tools for 
 transform data object from scheme and row data to new object. You can 
@@ -9,7 +9,7 @@ See usage section.
 ## Usage
 
 ```
-import { scheme, types } from 'scheme-model'
+import { formo } from 'transformo'
 
 const source = {
     foo: {
@@ -25,29 +25,29 @@ const source = {
 };
 
 const shape = {
-    newFoo: scheme.shape({
-        id: scheme.field({
+    newFoo: formo.shape({
+        id: formo.field({
             path: 'foo.bar.id',
-            type: types.number().required()
+            type: formo.number().required()
         }),
-        name: scheme.field({
+        name: formo.field({
             path: 'foo.bar.name',
-            type: types.string(),
+            type: formo.string(),
             defaultValue: 'Unknown'
         }),
-        image: scheme.field({
+        image: formo.field({
             path: 'foo.bar.image',
-            type: types.string(),
+            type: formo.string(),
             transform: (value) => `http://site.com/${value}`
         }),
-        difficult: scheme.field({
-            type: types.string().required(),
+        difficult: formo.field({
+            type: formo.string().required(),
             getSourceValue: (data) => _.get(data, 'foo.bar.some.field')
         })
     }) 
 };
 
-const fooModel = scheme.model(shape, source);
+const fooModel = formo.model(shape, source);
 
 fooModel
     .invalid((errors) => ...)

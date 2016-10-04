@@ -1,7 +1,20 @@
 {
   "name": "transformo",
   "version": "0.0.1",
+  "author": "Konstantin Liuterovich <konstantinliuterovich@gmail.com>",
+  "license": "MIT",
+  "main": "./lib/app.js",
+  "files": [
+    "dist",
+    "lib"
+  ],
   "scripts": {
+    "build:commonjs": "mkdir -p lib && babel ./src -d lib",
+    "build:umd": "webpack lib/app.js dist/transformo.js",
+    "build:umd:min": "NODE_ENV=production webpack -p lib/app.js dist/transformo.min.js",
+    "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min",
+    "clean": "rimraf lib dist",
+    "prepublish": "npm run clean && npm run build",
     "test": "karma start karma.config.js"
   },
   "devDependencies": {
@@ -13,7 +26,16 @@
     "karma-jasmine": "^0.1.6",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.8.0",
-    "webpack": "^1.13.2"
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.1.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "lodash": "^4.13.1",
+    "redux": "^3.5.2",
+    "rimraf": "^2.5.3",
+    "webpack": "^1.13.1"
   },
   "dependencies": {
     "lodash": "^4.16.2"

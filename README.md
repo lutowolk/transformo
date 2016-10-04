@@ -6,9 +6,15 @@ validate row data, transform this, set default value and create new object.
 
 See usage section.
 
-## Usage
+## Installation
 
 ```
+npm install --save transformo
+```
+
+## Usage
+
+```javascript
 import { formo } from 'transformo'
 
 const source = {
@@ -66,12 +72,5 @@ fooModel
 
 console.log(fooData);    
 
-// {
-//    newFoo: {
-//        id: 0,
-//        name: 'Unknown',
-//        image: 'http://site.com/image.jpg',
-//        difficult: 'custom'           
-//    }
-// }
+// -> { newFoo: { id: 0, name: 'Unknown', image: 'http://site.com/image.jpg', difficult: 'custom' } }
 ```

@@ -1,7 +1,8 @@
-# Scheme model
+# Transform JS
 
-Tools for creating data object from scheme and row data. You can validate
-row data, transform this, set default value and create new object.
+Transform one plain object to another with detail scheme. Tools for 
+transform data object from scheme and row data to new object. You can 
+validate row data, transform this, set default value and create new object.
 
 See usage section.
 
@@ -14,7 +15,11 @@ const source = {
     foo: {
         bar: {
             id: 0,
-            name: 'Test'
+            name: undefined,
+            image: 'image.jpg',
+            some: {
+                field: 'custom'
+            }
         }
     }
 };
@@ -31,13 +36,13 @@ const shape = {
             defaultValue: 'Unknown'
         }),
         image: scheme.field({
-            path: 'foo.bar.name',
+            path: 'foo.bar.image',
             type: types.string(),
             transform: (value) => `http://site.com/${value}`
         }),
         difficult: scheme.field({
             type: types.string().required(),
-            getSourceValue: (data) => _.get(data, 'path.to.field')
+            getSourceValue: (data) => _.get(data, 'foo.bar.some.field')
         })
     }) 
 };
@@ -64,7 +69,9 @@ console.log(fooData);
 // {
 //    newFoo: {
 //        id: 0,
-//        name: 'Test'
+//        name: 'Unknown',
+//        image: 'http://site.com/image.jpg',
+//        difficult: 'custom'           
 //    }
 // }
 ```

@@ -2,8 +2,7 @@
   "name": "data-schema",
   "version": "0.0.1",
   "scripts": {
-    "build": "gulp build",
-    "test": "gulp test"
+    "test": "karma start karma.config.js"
   },
   "devDependencies": {
     "jasmine": "^2.5.2",
@@ -14,11 +13,9 @@
     "karma-jasmine": "^0.1.6",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.8.0",
-    "lodash": "~4.5.1",
     "webpack": "^1.13.2"
   },
   "dependencies": {
-    "lodash": "^4.5.1",
-    "yup": "^0.21.2"
+    "lodash": "^4.16.2"
   }
 }
